@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   basic_funcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 21:09:37 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/09 22:12:23 by ftassada         ###   ########.fr       */
+/*   Created: 2021/11/05 15:08:44 by ftassada          #+#    #+#             */
+/*   Updated: 2021/11/09 01:18:22 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
-# define SOLONG_H
+#include "solong.h"
 
-# define WIDTH 800
-# define HEIGTH 800
-# define PROJECT_NAME "SoLoooong :)"
+int	check_format(char *file)
+{
+	size_t	i;
 
-# include "mlx.h"
-# include "mlx_buttons.h"
-# include "my_types.h"
-# include "get_next_line.h"
-# include "images.h"
-# include "parser.h"
-# include "libft.h"
-#include <stdio.h>
+	i = ft_strlen(file);
+	if (file[i - 1] == 'r' && file[i - 2] == 'e' && file[i - 3] == 'b' \
+		&& file[i - 4] == '.')
+		return (1);
+	return (0);
+}
 
-void	put_error(int fd);
-
-#endif
+void	put_error(int fd)
+{
+	if (fd != 0)
+		close(fd);
+	ft_putstr_fd("Error\n", 1);
+	exit(1);
+}

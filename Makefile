@@ -1,33 +1,87 @@
-FILES		= inits.c main.c
+NAME			= solong
 
-SRCDIR		= src/
+SRC_FILES		= inits.c main.c
 
-SRC			= ${addprefix ${SRCDIR}, ${FILES}}
+GNL_FILES		= get_next_line_utils.c get_next_line.c
 
-OBJ         = ${SRC:.c=.o}
+HELPERS_FILES	= basic_funcs.c
 
-SRCD		= ${patsubst %.c,%.d,${SRC}}
+MAP_FILES		= validator.c parser.c
 
-CFLAGS   = -Wall -Werror -Wextra
+SRC_DIR			= src/
 
-INCLUDES    = includes/
+GNL_DIR			= src/gnl/
 
-NAME		= solong
+HELPERS_DIR		= src/helpers/
 
-%.o:        %.c Makefile
-			${CC} ${CFLAGS} -c $< -o $@ -I${INCLUDES} -MMD 
+MAP_DIR			= src/map/
 
-all:		${NAME}
+SRCS			= ${addprefix ${HELPERS_DIR}, ${HELPERS_FILES}}
+SRCS			+= $(addprefix ${SRC_DIR}, ${SRC_FILES})
+SRCS			+= $(addprefix ${GNL_DIR}, ${GNL_FILES})
+SRCS			+= $(addprefix ${MAP_DIR}, ${MAP_FILES})
+#SRCS			+= ${addprefix ${SRCDIR}, ${FILES}}
 
-$(NAME):	${OBJ}
-			${CC} ${CFLAGS} ${OBJ} -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+SRC_SUBDIR		= . map/ gnl/ helpers/
+
+OBJ_DIR			= ./objs/
+
+OBJ_DIRS		= $(addprefix ${OBJ_DIR}, ${SRC_SUBDIR})
+
+OBJS			= $(patsubst ${SRC_DIR}%.c, ${OBJ_DIR}%.o, ${SRCS})
+
+CFLAGS			= -Wall -Werror -Wextra -O2 -MMD
+
+INCLUDES		= -I includes/ -I ${MINILIBIX_DIR} -I ${LIBFT_DIR}
+
+MINILIBIX_DIR	= ./minilibx
+
+GREENBG			= \033[42m
+
+NOBG			= \033[0m
+
+GREENTXT		= \033[1;32m
+
+NOCOLORTXT		= \033[0m
+
+LIBFT_DIR		= libft/
+
+LIBS			= -lmlx -L${MINILIBIX_DIR} -L${LIBFT_DIR} -lft
+
+all:			${NAME}
+
+$(NAME):		${OBJS}
+				echo  "${GREENTXT}Compiling MINILIB${NOCOLORTXT}\n"
+				make -sC  $(MINILIBIX_DIR)
+				echo  "${GREENTXT}MINILIB is compiled${NOCOLORTXT}\n"
+				echo  "${GREENTXT}Compiling LIBFT${NOCOLORTXT}\n"
+				make -sC ${LIBFT_DIR}
+				echo  "${GREENTXT}LIBFT is compiled${NOCOLORTXT}\n"
+				${CC}  ${CFLAGS} ${OBJS} ${LIBS} -framework OpenGL -framework AppKit -o $(NAME)
+				mv $(MINILIBIX_DIR)/libmlx.dylib .
+				echo "${GREENTXT}solong is compiled${NOCOLORTXT}\n"
+
+
+${OBJ_DIRS}:
+				mkdir -p $@
+
+include $(wildcard $(OBJ_DIR)*.d) $(wildcard ${OBJ_DIR}gnl/*.d) $(wildcard ${OBJ_DIR}parser/*.d) $(wildcard ${OBJ_DIR}map/*.d)
+#hope i will undefstand how to make Makefile dependency with prerequesite -.-
+${OBJ_DIR}%.o:	${SRC_DIR}%.c $(OBJ_DIRS) Makefile
+				${CC} ${CFLAGS} -c $< -o $@  ${INCLUDES}
 
 clean:
-			${RM} ${OBJ} ${SRCD}
+				rm -rf ${OBJ_DIR}
+				echo "${GREENTXT}Cleaning complete${NOCOLORTXT} \n"
 
-fclean:		clean
-			${RM} ${NAME}
+fclean:			clean
+				${RM} ${NAME}
+				${RM} libmlx.dylib
+				make clean -sC ${MINILIBIX_DIR}
+				make clean -sC ${LIBFT_DIR}
+				echo "${GREENTXT}Full cleaning is complete too${NOCOLORTXT} \n"
 
-re:			fclean all
+re:				fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:			all clean fclean re
+.SILENT:		all clean fclean re

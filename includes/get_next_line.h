@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 21:09:37 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/09 22:12:23 by ftassada         ###   ########.fr       */
+/*   Created: 2021/04/23 01:12:30 by ftassada          #+#    #+#             */
+/*   Updated: 2021/11/20 12:31:22 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
-# define SOLONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# define WIDTH 800
-# define HEIGTH 800
-# define PROJECT_NAME "SoLoooong :)"
+# include <unistd.h>
+# include <stdlib.h>
 
-# include "mlx.h"
-# include "mlx_buttons.h"
-# include "my_types.h"
-# include "get_next_line.h"
-# include "images.h"
-# include "parser.h"
-# include "libft.h"
-#include <stdio.h>
-
-void	put_error(int fd);
+int		get_next_line(int fd, char **line);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strtrunc(char *str, char c);
+char	*ft_strchr(const char *s, int c);
 
 #endif

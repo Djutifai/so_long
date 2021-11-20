@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 21:09:37 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/09 22:12:23 by ftassada         ###   ########.fr       */
+/*   Created: 2021/11/04 00:44:16 by ftassada          #+#    #+#             */
+/*   Updated: 2021/11/09 00:43:03 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
-# define SOLONG_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# define WIDTH 800
-# define HEIGTH 800
-# define PROJECT_NAME "SoLoooong :)"
+# include "fcntl.h"
 
-# include "mlx.h"
-# include "mlx_buttons.h"
-# include "my_types.h"
-# include "get_next_line.h"
-# include "images.h"
-# include "parser.h"
-# include "libft.h"
-#include <stdio.h>
-
-void	put_error(int fd);
+void	parse_this(char *file);
+void	validate_map(int fd, int *max_x, int *max_y, t_val *val);
+int		check_format(char *file);
+int		check_if_square(int fd, int max_x, int max_y);
 
 #endif
