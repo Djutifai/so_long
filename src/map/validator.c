@@ -6,50 +6,52 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:26:58 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/10 00:19:33 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/24 23:54:22 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-static int	square_helper(char *str, int max_x)
+static int	square_helper(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (i != max_x)
+	while (str[i] != '\n')
+	{
 		if (str[i++] != WALL)
 			return (-1);
-	i = ft_strlen(str) - max_x - 1;
-	while (str[i] && str[i] != '\n')
-		if (str[i++] != WALL)
+	}
+	i = ft_strlen(str) - 1;
+	while (str[i] != '\n')
+		if (str[i--] != WALL)
 			return (-1);
 	return (1);
 }
 
-int	check_if_square(int fd, int max_x, int symbols)
+int	check_if_square(int fd, int max_x, int max_y)
 {
 	char	*str;
+	int		size_of_map;
 
-	str = malloc(sizeof(*str) * symbols + 1);
+	size_of_map = max_x * max_y + max_y;
+	str = ft_calloc(sizeof(*str), size_of_map);
 	if (!str)
 		return (-1);
-	read(fd, str, symbols);
-	printf("a\n");
-	if (square_helper(str, max_x) == -1)
+	read(fd, str, size_of_map);
+	str[size_of_map] = '\0';
+	if (square_helper(str) == -1)
 	{
-	printf("\n");
 		free(str);
 		put_error(fd);
 	}
-	printf("A\n");
 	free(str);
 	return (1);
 }
 
 static int	validate_values(t_val *val)
 {
-	if (val->col == 0 || val->exit == 0 || val->floor == 0 || \
+	if (val->col == 0 || val->exit == 0 || \
 		val->wall == 0 || val->player == 0 || val->player > 1)
 		return (-1);
 	return (0);

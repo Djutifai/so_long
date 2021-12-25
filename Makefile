@@ -8,6 +8,10 @@ HELPERS_FILES	= basic_funcs.c
 
 MAP_FILES		= validator.c parser.c
 
+REND_FILES		= render.c
+
+MOVE_FILES		= pl_move.c
+
 SRC_DIR			= src/
 
 GNL_DIR			= src/gnl/
@@ -16,13 +20,18 @@ HELPERS_DIR		= src/helpers/
 
 MAP_DIR			= src/map/
 
+REND_DIR		= src/render/
+
+MOVE_DIR		= src/movement/
+
 SRCS			= ${addprefix ${HELPERS_DIR}, ${HELPERS_FILES}}
 SRCS			+= $(addprefix ${SRC_DIR}, ${SRC_FILES})
+SRCS			+= ${addprefix ${MOVE_DIR}, ${MOVE_FILES}}
+SRCS			+= $(addprefix ${REND_DIR}, ${REND_FILES})
 SRCS			+= $(addprefix ${GNL_DIR}, ${GNL_FILES})
 SRCS			+= $(addprefix ${MAP_DIR}, ${MAP_FILES})
-#SRCS			+= ${addprefix ${SRCDIR}, ${FILES}}
 
-SRC_SUBDIR		= . map/ gnl/ helpers/
+SRC_SUBDIR		= . map/ render/ gnl/ helpers/ movement/
 
 OBJ_DIR			= ./objs/
 
@@ -65,7 +74,8 @@ $(NAME):		${OBJS}
 ${OBJ_DIRS}:
 				mkdir -p $@
 
-include $(wildcard $(OBJ_DIR)*.d) $(wildcard ${OBJ_DIR}gnl/*.d) $(wildcard ${OBJ_DIR}parser/*.d) $(wildcard ${OBJ_DIR}map/*.d)
+include $(wildcard $(OBJ_DIR)*.d) $(wildcard $(OBJ_DIR)render/*.d) $(wildcard ${OBJ_DIR}gnl/*.d) \
+	$(wildcard ${OBJ_DIR}parser/*.d) $(wildcard ${OBJ_DIR}map/*.d) $(wildcard ${OBJ_DIR}movement/*.d)
 #hope i will undefstand how to make Makefile dependency with prerequesite -.-
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c $(OBJ_DIRS) Makefile
 				${CC} ${CFLAGS} -c $< -o $@  ${INCLUDES}

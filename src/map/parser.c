@@ -6,17 +6,62 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 23:57:16 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/09 22:11:22 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/25 01:15:48 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
+static void	search_for_player(t_vars *vars, char *str, int j)
+{
+	static int	found;
+	int			i;
+
+	i = 0;
+	if (found == 1)
+		return ;
+	else
+		found = 0;
+	while (str[i] && str[i] != 'P')
+		i++;
+	if (str[i] == 'P')
+	{
+		vars->hero_x = i;
+		vars->hero_y = j;
+		printf("FOUND IT ON %d %d\n", i, j);
+		found = 1;
+	}
+}
+
+static char	**parse_map(int fd, t_vars *vars, int max_x, int max_y)
+{
+	char	**map;
+	int		i;
+
+	vars->max_x = max_x;
+	vars->max_y = max_y;
+	map = malloc(sizeof(*map) * max_y);
+	if (!map)
+		put_error(fd);
+	i = 0;
+	while (i < max_y)
+	{
+		get_next_line(fd, &map[i]);
+		if (!map[i])
+			free_map(&map, i, 1, fd);
+		map[i][max_x] = '\0';
+		search_for_player(vars, map[i], i);
+		i++;
+	}
+	vars->map = map;
+	return (map);
+}
+
 static t_val	*init_val(void)
 {
 	t_val	*val;
 
-	val = malloc(sizeof(*val));
+	val = ft_calloc(sizeof(*val), 1);
 	if (val == NULL)
 		put_error(0);
 	val->col = 0;
@@ -28,13 +73,13 @@ static t_val	*init_val(void)
 	return (val);
 }
 
-void	parse_this(char *file)
+t_vars	parse_this(char *file)
 {
-	//char	**map;
 	int		fd;
 	int		max_x;
 	int		max_y;
 	t_val	*val;
+	t_vars	vars;
 
 	max_x = 0;
 	max_y = 0;
@@ -47,6 +92,10 @@ void	parse_this(char *file)
 		put_error(fd);
 	close(fd);
 	fd = open(file, O_RDONLY);
-//	map = parse_map(fd);
+	parse_map(fd, &vars, max_x, max_y);
+	init_vars(&vars);
+	vars.max_col = val->col;
+	free(val);
 	close(fd);
+	return (vars);
 }

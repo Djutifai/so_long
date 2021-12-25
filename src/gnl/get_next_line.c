@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 20:15:55 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/06 02:26:16 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/19 21:02:27 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	get_next_line(int fd, char **line)
 	if (!line)
 		return (-1);
 	fr = 1;
-	buf = malloc(sizeof(*buf) * 7);
+	buf = ft_calloc(sizeof(*buf), 7);
 	if (!buf)
 		return (ft_free_all(NULL, &cache, -1));
 	while (fr && !ft_strchr(cache, '\n'))

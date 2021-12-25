@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:41 by ftassada          #+#    #+#             */
-/*   Updated: 2021/11/09 22:10:48 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/25 01:20:30 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ enum e_props
 	WALL		= '1',
 	PLAYER		= 'P',
 	COLLECTIBLE = 'C',
-	EXIT		= 'E'
+	EXIT		= 'E',
+	ENEMY		= 'T'
 };
 
 typedef struct s_img	t_img;
@@ -31,31 +32,30 @@ typedef struct s_val	t_val;
 
 struct s_spr
 {
-	void	*main_hero;
-	void	*bocal;
+	void	*hero;
+	void	*adm;
 	void	*wall;
 	void	*floor;
-	void	*punish;
+	void	*pnsh;
 	void	*tij;
-};
-
-struct s_img
-{
-	void	*image;
-	char	*adr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 };
 
 struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	t_img	img;
 	t_spr	sprites;
-	int		x;
-	int		y;
+	int		hero_x;
+	int		hero_y;
+	int		collected;
+	int		max_col;
+	int		max_x;
+	int		max_y;
+	int		moves;
+	int		is_big;
+	int		width;
+	int		heigth;
+	char	**map;
 };
 
 struct s_val
@@ -68,6 +68,6 @@ struct s_val
 	int	symbols;
 };
 
-t_vars	init_vars(void);
+void	init_vars(t_vars *vars);
 
 #endif
