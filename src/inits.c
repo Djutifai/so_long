@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:09:33 by ftassada          #+#    #+#             */
-/*   Updated: 2021/12/25 01:56:52 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/25 19:27:50 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	press_key(int keycode, t_vars *vars)
 				render_big(vars);
 			else
 				render(vars);
-				printf("HEY\n");
 		}
 	}
 	return (0);
@@ -73,19 +72,20 @@ static void	init_sprites(t_vars *vars)
 void	init_vars(t_vars *vars)
 {
 	vars->mlx = mlx_init();
-	if (vars->max_x * 25 <= 800 && vars->max_y * 25 <= 800)
+	if (vars->max_x * FRAME <= MAX_WIDTH && vars->max_y * FRAME <= MAX_HEGTH)
 	{
-		vars->win = mlx_new_window(vars->mlx, vars->max_x * 25, \
-			vars->max_y * 25, PROJECT_NAME);
+		vars->win = mlx_new_window(vars->mlx, vars->max_x * FRAME, \
+			vars->max_y * FRAME, PROJECT_NAME);
 		vars->width = vars->max_x * 25;
 		vars->heigth = vars->max_y * 25;
 		vars->is_big = 0;
 	}
 	else
 	{
-		vars->win = mlx_new_window(vars->mlx, 800, 800, PROJECT_NAME);
-		vars->width = 800;
-		vars->heigth = 800;
+		vars->win = mlx_new_window(vars->mlx, MAX_WIDTH, MAX_HEGTH, \
+			PROJECT_NAME);
+		vars->width = MAX_WIDTH;
+		vars->heigth = MAX_HEGTH;
 		vars->is_big = 1;
 	}
 	vars->moves = 0;

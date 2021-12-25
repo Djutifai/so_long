@@ -6,14 +6,17 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:09:37 by ftassada          #+#    #+#             */
-/*   Updated: 2021/12/25 01:33:08 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/25 19:27:04 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SOLONG_H
 # define SOLONG_H
 
-# define PROJECT_NAME "SoLoooong :)"
+# define PROJECT_NAME	"SoLoooong :)"
+# define FRAME 			25
+# define MAX_WIDTH		800
+# define MAX_HEGTH		800
 
 # include "mlx.h"
 # include "mlx_buttons.h"

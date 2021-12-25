@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:41 by ftassada          #+#    #+#             */
-/*   Updated: 2021/12/25 01:20:30 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/12/25 19:21:56 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ struct s_vars
 	int		is_big;
 	int		width;
 	int		heigth;
+	int8_t	vision;	
 	char	**map;
 };
 
