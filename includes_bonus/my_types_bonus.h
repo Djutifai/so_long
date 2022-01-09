@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_types.h                                         :+:      :+:    :+:   */
+/*   my_types_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:41 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 20:06:38 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/09 21:42:28 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_TYPES_H
-# define MY_TYPES_H
+#ifndef MY_TYPES_BONUS_H
+# define MY_TYPES_BONUS_H
 
 typedef enum e_props	t_props;
 

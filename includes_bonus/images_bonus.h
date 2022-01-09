@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   images_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/25 19:07:06 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 20:49:56 by ftassada         ###   ########.fr       */
+/*   Created: 2021/11/04 22:26:41 by ftassada          #+#    #+#             */
+/*   Updated: 2022/01/09 21:43:30 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef IMAGES_BONUS_H
+# define IMAGES_BONUS_H
 
-# include "solong.h"
-
-char	*ft_put_moves(t_vars *vars);
-void	put_img(t_vars *vars, t_cord cords);
-
+# define IMG_HERO		"sprites/myMan.xpm"
+# define IMG_WALL		"sprites/wall.xpm"
+# define IMG_FLOOR		"sprites/floor.xpm"
+# define IMG_COL		"sprites/col.xpm"
+# define IMG_EXIT		"sprites/exit.xpm"
 #endif

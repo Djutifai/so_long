@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/25 19:07:06 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 20:49:56 by ftassada         ###   ########.fr       */
+/*   Created: 2021/10/25 21:12:27 by ftassada          #+#    #+#             */
+/*   Updated: 2022/01/09 21:34:39 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "solong_bonus.h"
 
-# include "solong.h"
+int	main(int argc, char **argv)
+{
+	t_vars	vars;
 
-char	*ft_put_moves(t_vars *vars);
-void	put_img(t_vars *vars, t_cord cords);
-
-#endif
+	if (argc != 2 || !check_format(argv[1]))
+		put_error(0);
+	vars = parse_this(argv[1]);
+	mlx_loop(vars.mlx);
+	return (1);
+}

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/25 19:07:06 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 20:49:56 by ftassada         ###   ########.fr       */
+/*   Created: 2021/04/23 01:12:30 by ftassada          #+#    #+#             */
+/*   Updated: 2022/01/09 21:43:31 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-# include "solong.h"
+# include <unistd.h>
+# include <stdlib.h>
 
-char	*ft_put_moves(t_vars *vars);
-void	put_img(t_vars *vars, t_cord cords);
+int		get_next_line(int fd, char **line);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strtrunc(char *str, char c);
+char	*ft_strchr(const char *s, int c);
 
 #endif
