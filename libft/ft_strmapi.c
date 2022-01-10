@@ -6,13 +6,13 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:30:58 by ftassada          #+#    #+#             */
-/*   Updated: 2021/04/21 13:45:40 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 00:44:49 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi (char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*str;
 	unsigned int	i;

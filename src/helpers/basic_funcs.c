@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:08:44 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:03:00 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 01:30:26 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ static void	destroy_images(t_vars *vars)
 void	free_all(t_vars *vars, int errflag)
 {
 	destroy_images(vars);
-	mlx_destroy_window(vars->mlx, vars->win);
-	free_map(&(vars->map), vars->max_y - 1, errflag, 0);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->map)
+		free_map(&(vars->map), vars->max_y - 1, errflag, 0);
 	ft_putstr_fd("Thanks for playing my game :D\n", 1);
 }
 

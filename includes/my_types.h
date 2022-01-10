@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:41 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 20:06:38 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:03:38 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ enum e_props
 	PLAYER		= 'P',
 	COLLECTIBLE = 'C',
 	EXIT		= 'E',
-	ENEMY		= 'T'
 };
 
 typedef struct s_img	t_img;
@@ -38,7 +37,6 @@ struct s_spr
 	void	*wall;
 	void	*floor;
 	void	*pnsh;
-	void	*tij;
 };
 
 struct s_cord
@@ -53,7 +51,6 @@ struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	void	*buf_win;
 	t_spr	sprites;
 	int		hero_x;
 	int		hero_y;

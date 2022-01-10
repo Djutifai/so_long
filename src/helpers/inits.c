@@ -6,16 +6,28 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:09:33 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:15:03 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 01:32:21 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
+static int	exit_window(int key, t_vars *vars)
+{
+	(void)key;
+	(void)vars;
+	ft_putstr_fd("Thanks for playing my game! :D\n", 1);
+	exit(0);
+	return (1);
+}
+
 static int	press_key(int key, t_vars *vars)
 {
 	if (key == ESC_KEY)
-		exit(1);
+	{
+		free_all(vars, 0);
+		exit(0);
+	}
 	if (key == W_KEY || key == A_KEY || key == S_KEY || key == D_KEY)
 	{
 		if (vars->hero_x >= 0 && vars->hero_x <= vars->width && \
@@ -30,10 +42,7 @@ static int	press_key(int key, t_vars *vars)
 				pl_move(vars, 0, 1);
 			else if (key == D_KEY && vars->hero_x + 1 <= vars->max_x)
 				pl_move(vars, 1, 0);
-			if (vars->is_big)
-				render_big(vars);
-			else
-				render(vars);
+			render(vars);
 		}
 	}
 	return (0);
@@ -91,4 +100,5 @@ void	init_vars(t_vars *vars)
 	help_to_init(vars);
 	init_sprites(vars);
 	mlx_hook(vars->win, KEY_PRESS, KEY_PRESS_MASK, press_key, vars);
+	mlx_hook(vars->win, CLOSE_WIN, CLOSE_WIN_MASK, exit_window, 0);
 }

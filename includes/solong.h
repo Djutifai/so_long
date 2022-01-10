@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:09:37 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:43:44 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 00:46:08 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	free_all(t_vars *vars, int errflag);
 void	free_map(char ***map, int cur_y, int errflag, int fd);
 void	pl_move(t_vars *vars, int x, int y);
 void	render(t_vars *vars);
-void	render_big(t_vars *vars);
 int		min_int(int a, int b);
 int		max_int(int a, int b);
 

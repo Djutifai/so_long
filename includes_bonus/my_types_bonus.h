@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:41 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:42:28 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 00:31:02 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_vars	t_vars;
 typedef struct s_spr	t_spr;
 typedef struct s_val	t_val;
 typedef struct s_cord	t_cord;
+typedef struct s_enemy	t_enemy;
+
+struct s_enemy
+{
+	int	x;
+	int	y;
+};
 
 struct s_spr
 {
@@ -53,7 +60,6 @@ struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	void	*buf_win;
 	t_spr	sprites;
 	int		hero_x;
 	int		hero_y;
@@ -66,6 +72,8 @@ struct s_vars
 	int		width;
 	int		heigth;
 	int		vision;
+	int		cur_enemies;
+	t_enemy	*enemies;
 	char	**map;
 };
 
@@ -76,6 +84,7 @@ struct s_val
 	int	col;
 	int	player;
 	int	exit;
+	int	enemy;
 	int	symbols;
 };
 

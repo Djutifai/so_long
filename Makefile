@@ -10,7 +10,7 @@ D_FILES			= $(patsubst %.c,%.d,${SRCS})
 
 SRC_BON_DIR		= src_bonus/
 
-SRCS_BON		= $(shell find ${SRC_BON_DIR} -name *.c)
+SRCS_BON		= $(shell find ${SRC_BON_DIR} -name *bonus.c)
 OBJS_BON		= $(patsubst %.c,%.o,${SRCS_BON})
 D_FILES_BON		= $(patsubst %.c,%.d,${SRCS_BON})
 
@@ -34,8 +34,11 @@ LIBFT_DIR		= libft/
 
 LIBS			= -lmlx -L${MINILIBIX_DIR} -L${LIBFT_DIR} -lft
 
+%bonus.o:		%bonus.c Makefile
+				@${CC} ${CFLAGS} -c $< -o $@ ${INCLUDES_BON}
+
 %.o:			%.c Makefile
-				${CC} ${CFLAGS} -c $< -o $@  ${INCLUDES} ${INCLUDES_BON}
+				@${CC} ${CFLAGS} -c $< -o $@  ${INCLUDES}
 
 all:			${NAME}
 
@@ -78,7 +81,7 @@ fclean:			clean
 
 re:				fclean all
 
-include $(wildcard $(D_FILES))
+include $(wildcard $(D_FILES)) $(wildcard $(D_FILES_BON))
 
 .PHONY:			all clean fclean re bonus
-.SILENT:		all clean fclean re bonus $(NAME)
+.SILENT:		all clean fclean re bonus $(NAME) $(NAME_BON)

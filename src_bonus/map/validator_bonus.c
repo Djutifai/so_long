@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:26:58 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:34:39 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/09 22:46:35 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	check_if_square(int fd, int max_x, int max_y)
 		put_error(fd);
 	}
 	free(str);
+	close(fd);
 	return (1);
 }
 
@@ -74,6 +75,8 @@ static int	validate_line(char *str, t_val *val)
 			val->exit += 1;
 		else if (str[i] == PLAYER)
 			val->player += 1;
+		else if (str[i] == ENEMY)
+			val->enemy += 1;
 		else
 			return (-1);
 		i++;
@@ -107,4 +110,5 @@ void	validate_map(int fd, int *max_x, int *max_y, t_val *val)
 	}
 	if (validate_values(val) == -1)
 		put_error(fd);
+	close(fd);
 }

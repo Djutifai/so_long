@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 23:57:16 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 18:46:43 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/10 23:38:07 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	search_for_player(t_vars *vars, char *str, int j)
 		return ;
 	else
 		found = 0;
-	while (str[i] && str[i] != 'P')
+	while (str[i] && str[i] != PLAYER)
 		i++;
-	if (str[i] == 'P')
+	if (str[i] == PLAYER)
 	{
 		vars->hero_x = i;
 		vars->hero_y = j;
@@ -53,6 +53,7 @@ static char	**parse_map(int fd, t_vars *vars, int max_x, int max_y)
 		i++;
 	}
 	vars->map = map;
+	close(fd);
 	return (map);
 }
 
@@ -94,7 +95,7 @@ t_vars	parse_this(char *file)
 	parse_map(fd, &vars, max_x, max_y);
 	init_vars(&vars);
 	vars.max_col = val->col;
-	free(val);
 	close(fd);
+	free(val);
 	return (vars);
 }

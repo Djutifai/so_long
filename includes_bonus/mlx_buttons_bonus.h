@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:50:23 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:43:32 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 01:34:00 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define BUTTON_PRESS_MASK		4
 # define BUTTON_RELEASE			5
 # define BUTTON_RELEASE_MASK	8
+# define CLOSE_WIN				17
+# define CLOSE_WIN_MASK			131072
 
 # define ESC_KEY 53
 # define W_KEY	13

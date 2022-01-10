@@ -1,9 +1,9 @@
 /* XPM */
-static char *_db8d46bf9b64010ecd86c8bb48bcdb5pyqIUF0OwNxNpte3[] = {
+static char *_8ade225e5c24a5eff48bdacf5922bb8hu452BGnKD0L9tMa[] = {
 /* columns rows colors chars-per-pixel */
 "25 25 2 1 ",
 "  c None",
-". c #FF9800",
+". c #D50000",
 /* pixels */
 "                         ",
 "                         ",
@@ -14,13 +14,13 @@ static char *_db8d46bf9b64010ecd86c8bb48bcdb5pyqIUF0OwNxNpte3[] = {
 "                         ",
 "                         ",
 "                         ",
-" ...      ....      .   .",
-".   .     .   .     .. ..",
-".....     .   .     . . .",
-".   .     .   .     .   .",
-".   .     .   .     .   .",
-".   .     .   .     .   .",
-".   .     ....      .   .",
+" .....     ...         . ",
+"   .        .          . ",
+"   .        .          . ",
+"   .        .          . ",
+"   .        .          . ",
+"   .        .      .   . ",
+"   .       ...      ...  ",
 "                         ",
 "                         ",
 "                         ",

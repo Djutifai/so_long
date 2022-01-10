@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:08:44 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 21:34:39 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/11 01:36:18 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	destroy_images(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->sprites.hero);
 	if (vars->sprites.pnsh)
 		mlx_destroy_image(vars->mlx, vars->sprites.pnsh);
+	if (vars->sprites.tij)
+		mlx_destroy_image(vars->mlx, vars->sprites.tij);
 }
 
 void	free_all(t_vars *vars, int errflag)
@@ -31,7 +33,9 @@ void	free_all(t_vars *vars, int errflag)
 	destroy_images(vars);
 	mlx_destroy_window(vars->mlx, vars->win);
 	free_map(&(vars->map), vars->max_y - 1, errflag, 0);
-	ft_putstr_fd("Thanks for playing my game :D\n", 1);
+	if (vars->enemies)
+		free(vars->enemies);
+	ft_putstr_fd("\nThanks for playing my game :D\n", 1);
 }
 
 int	check_format(char *file)
