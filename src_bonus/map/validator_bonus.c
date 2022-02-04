@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:26:58 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/09 22:46:35 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/29 15:03:24 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	validate_line(char *str, t_val *val)
 			return (-1);
 		i++;
 	}
-	if (i != 0 && str[0] != WALL && str[i - 1] != WALL)
+	if (i == 0 || str[0] != WALL || str[i - 1] != WALL)
 		return (-1);
 	return (i);
 }
